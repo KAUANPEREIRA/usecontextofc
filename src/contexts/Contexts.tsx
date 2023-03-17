@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, ReactNode, useReducer } from "react";
 import {
   userInitialState,
   userReducer,
@@ -27,7 +27,9 @@ const mainReducer = (state: InitialStateType, action: reducerActionType) => ({
   user: userReducer(state.user, action),
 });
 
-export const ContextProvider: React.FC = ({ children }) => {
+export const ContextProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(mainReducer, InitialState);
   return (
     <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
