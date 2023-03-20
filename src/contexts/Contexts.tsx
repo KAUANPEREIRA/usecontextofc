@@ -1,5 +1,10 @@
 import React, { createContext, ReactNode, useReducer } from "react";
 import {
+  themeInitialState,
+  themeReducer,
+  ThemeType,
+} from "../reducers/themeReducer";
+import {
   userInitialState,
   userReducer,
   UserType,
@@ -8,6 +13,7 @@ import { reducerActionType } from "../types/reducerActionType";
 
 type InitialStateType = {
   user: UserType;
+  theme: ThemeType;
 };
 
 type ContextType = {
@@ -16,6 +22,7 @@ type ContextType = {
 };
 const InitialState = {
   user: userInitialState,
+  theme: themeInitialState,
 };
 
 export const Context = createContext<ContextType>({
@@ -25,6 +32,7 @@ export const Context = createContext<ContextType>({
 
 const mainReducer = (state: InitialStateType, action: reducerActionType) => ({
   user: userReducer(state.user, action),
+  theme: themeReducer(state.theme, action),
 });
 
 export const ContextProvider: React.FC<{ children: ReactNode }> = ({

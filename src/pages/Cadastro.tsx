@@ -20,24 +20,6 @@ export const Cadastro = () => {
     });
   };
 
-  const handleChangeName = () => {
-    dispatch({
-      type: "CHANGE_NAME",
-      payload: {
-        name: nameInput,
-      },
-    });
-  };
-
-  const handleChangeAge = () => {
-    dispatch({
-      type: "CHANGE_AGR",
-      payload: {
-        age: Number(ageInput),
-      },
-    });
-  };
-
   const [nameInput, setNameInput] = useState("");
   const [ageInput, setAgeInput] = useState("");
   return (
